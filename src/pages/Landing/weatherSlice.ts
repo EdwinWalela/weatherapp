@@ -34,7 +34,7 @@ export const fetchWeather = createAsyncThunk(
 	'weather/location',
 	async (location: string, { rejectWithValue }) => {
 		try {
-			const response = await axios.get(`${BASE_URL}?appid=${API_KEY}&q=${1}&units=metric`);
+			const response = await axios.get(`${BASE_URL}?appid=${API_KEY}&q=${location}&units=metric`);
 			return response.data;
 		} catch (error: any) {
 			return rejectWithValue(error.message);
@@ -45,7 +45,14 @@ export const fetchWeather = createAsyncThunk(
 export const weatherSlice = createSlice({
 	name: 'weather',
 	initialState,
-	reducers: {},
+	reducers: {
+		updateLocation: (state, action: PayloadAction<string>) => {
+			return {
+				...state,
+				location: action.payload,
+			};
+		},
+	},
 	extraReducers: (builder) => {
 		builder.addCase(fetchWeather.fulfilled, (state, action) => {
 			state.location = action.payload.name;
@@ -68,4 +75,5 @@ export const weatherSlice = createSlice({
 	},
 });
 
+export const { updateLocation } = weatherSlice.actions;
 export default weatherSlice.reducer;

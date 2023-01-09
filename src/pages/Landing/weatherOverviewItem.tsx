@@ -29,13 +29,17 @@ const WeatherOverviewItem = (props: { weather: { category: string; value: number
 			title = 'Sunrise';
 			svg = sunriseSvg;
 			let sunriseDate = new Date(props.weather.value * 1000);
-			value = `${sunriseDate.getHours()}:${sunriseDate.getMinutes()} am`;
+			let sunriseMinutes = sunriseDate.getMinutes();
+			value = `${sunriseDate.getHours()}:${
+				sunriseMinutes < 10 ? `0${sunriseMinutes}` : sunriseMinutes
+			} am`;
 			break;
 		case 'sunset':
 			title = 'Sunset';
 			svg = sunsetSvg;
 			let sunsetDate = new Date(props.weather.value * 1000);
-			value = `${sunsetDate.getHours() - 12}:${sunsetDate.getMinutes()} pm`;
+			let minutes = sunsetDate.getMinutes();
+			value = `${sunsetDate.getHours() - 12}:${minutes < 10 ? `0${minutes}` : minutes} pm`;
 			break;
 		case 'humidity':
 			title = 'Humidity';

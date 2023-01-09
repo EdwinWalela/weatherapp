@@ -1,7 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import React, { useState } from 'react';
+import { useAppDispatch } from '../../store/hooks';
+import { updateLocation } from './weatherSlice';
 
 const Header = () => {
+	const [location, setLocation] = useState('');
+	const dispatch = useAppDispatch();
+
+	function handleLocationUpdate() {
+		dispatch(updateLocation(location));
+	}
+
+	function handleLocationOnchange(e: React.FormEvent<HTMLInputElement>) {
+		setLocation(e.currentTarget.value);
+	}
+
 	const now = new Date();
 	let months = [
 		'January',
@@ -48,8 +62,13 @@ const Header = () => {
 					<input
 						className="bg-gray-100 rounded-full py-2 pl-6 text-md tracking-wider"
 						placeholder="Search location here"
+						onChange={handleLocationOnchange}
 					/>
-					<FontAwesomeIcon icon={faSearch} className="ml-4 cursor-pointer" />
+					<FontAwesomeIcon
+						icon={faSearch}
+						className="ml-4 cursor-pointer relative right-14"
+						onClick={handleLocationUpdate}
+					/>
 				</div>
 			</div>
 		</div>
