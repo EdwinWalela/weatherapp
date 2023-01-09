@@ -41,7 +41,7 @@ const WeatherOverviewItem = (props: { weather: { category: string; value: number
 			value = `${props.weather.value} %`;
 			break;
 		case 'feelsLike':
-			title = 'Feels Like';
+			title = 'Temperature';
 			svg = feelLikeSvg;
 			value = `${props.weather.value} °C`;
 			break;
