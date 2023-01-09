@@ -31,13 +31,10 @@ const Header = () => {
 		'Nov',
 		'Dec',
 	];
-
 	let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-
 	let month = months[now.getMonth()];
 	let monthShort = monthsShort[now.getMonth()];
 	let day = days[now.getDay()];
-
 	return (
 		<div className="flex-1 ">
 			<div className="flow-root ">
