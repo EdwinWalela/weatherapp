@@ -10,6 +10,8 @@ interface WeatherState {
 	sunrise: number;
 	sunset: number;
 	loading: boolean;
+	error: boolean;
+	errorMsg: string;
 }
 
 const initialState = {
@@ -21,6 +23,8 @@ const initialState = {
 	sunrise: 0,
 	sunset: 0,
 	loading: false,
+	error: false,
+	errorMsg: '',
 } as WeatherState;
 
 const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
@@ -30,7 +34,7 @@ export const fetchWeather = createAsyncThunk(
 	'weather/location',
 	async (location: string, { rejectWithValue }) => {
 		try {
-			const response = await axios.get(`${BASE_URL}?appid=${API_KEY}&q=${location}&units=metric`);
+			const response = await axios.get(`${BASE_URL}?appid=${API_KEY}&q=${1}&units=metric`);
 			return response.data;
 		} catch (error: any) {
 			return rejectWithValue(error.message);
@@ -52,9 +56,14 @@ export const weatherSlice = createSlice({
 			state.temperature = Math.floor(action.payload.main.temp);
 			state.windSpeed = Math.floor(action.payload.wind.speed);
 			state.loading = false;
+			state.error = false;
 		});
 		builder.addCase(fetchWeather.pending, (state, action) => {
 			state.loading = true;
+		});
+		builder.addCase(fetchWeather.rejected, (state, action) => {
+			state.error = true;
+			state.errorMsg = `Failed to load weather at location: ${state.location}`;
 		});
 	},
 });

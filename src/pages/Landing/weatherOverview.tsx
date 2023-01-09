@@ -14,6 +14,11 @@ const WeatherOverview = () => {
 	return (
 		<div className="mt-10">
 			<h2 className="font-medium text-lg">Today overview at {weather.location}</h2>
+			{weather.error && (
+				<p className="text-center bg-red-500 text-white m-auto w-1/4 px-1 py-2 rounded-md shadow-lg cursor-pointer">
+					{weather.errorMsg}
+				</p>
+			)}
 			<div className="flex justify-center">
 				<div className="mr-10 w-full cursor-pointer">
 					<WeatherOverviewItem weather={{ category: 'wind', value: weather.windSpeed }} />
