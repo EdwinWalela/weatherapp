@@ -3,7 +3,7 @@ import WeatherOverviewItem from './weatherOverviewItem';
 const WeatherOverview = () => {
 	return (
 		<div className="mt-10">
-			<h2 className="font-medium text-lg">Today overview</h2>
+			<h2 className="font-medium text-lg">Today overview at Nairobi</h2>
 			<div className="flex justify-center">
 				<div className="mr-10 w-full cursor-pointer">
 					<WeatherOverviewItem weather={{ category: 'wind', value: 10 }} />
