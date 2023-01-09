@@ -5,7 +5,6 @@ import LandingPage from './pages/Landing';
 function App() {
 	return (
 		<div className="flex">
-			<NavBar />
 			<LandingPage />
 		</div>
 	);

@@ -1,10 +1,11 @@
 import Header from './header';
+import WeatherOverview from './weatherOverview';
 
 const LandingPage = () => {
 	return (
-		<div className="flex w-4/5">
+		<div className="w-screen p-6 px-10">
 			<Header />
-			<div className="bg-blue-300 h-screen w-2/6">a</div>
+			<WeatherOverview />
 		</div>
 	);
 };
