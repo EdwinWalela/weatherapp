@@ -6,8 +6,10 @@ import pressureSvg from '../../assets/pressure.svg';
 import sunriseSvg from '../../assets/sunrise.svg';
 import sunsetSvg from '../../assets/sunset.svg';
 import windSvg from '../../assets/wind.svg';
+import { useAppSelector } from '../../store/hooks';
 
 const WeatherOverviewItem = (props: { weather: { category: string; value: number } }) => {
+	const isLoading = useAppSelector((state) => state.weather.loading);
 	let title = 'N/A';
 	let value = 'N/A';
 	let svg = '';
@@ -55,7 +57,7 @@ const WeatherOverviewItem = (props: { weather: { category: string; value: number
 
 			<div className="ml-4">
 				<p className="text-sm text-gray-500">{title}</p>
-				<h1 className="text-3xl font-medium">{value}</h1>
+				<h1 className="text-3xl font-medium">{isLoading ? <span>...</span> : value}</h1>
 			</div>
 		</div>
 	);

@@ -9,6 +9,7 @@ interface WeatherState {
 	pressure: number;
 	sunrise: number;
 	sunset: number;
+	loading: boolean;
 }
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
 	pressure: 0,
 	sunrise: 0,
 	sunset: 0,
+	loading: false,
 } as WeatherState;
 
 const API_KEY = import.meta.env.VITE_OPEN_WEATHER_API_KEY;
@@ -49,6 +51,10 @@ export const weatherSlice = createSlice({
 			state.sunset = action.payload.sys.sunset;
 			state.temperature = Math.floor(action.payload.main.temp);
 			state.windSpeed = Math.floor(action.payload.wind.speed);
+			state.loading = false;
+		});
+		builder.addCase(fetchWeather.pending, (state, action) => {
+			state.loading = true;
 		});
 	},
 });
