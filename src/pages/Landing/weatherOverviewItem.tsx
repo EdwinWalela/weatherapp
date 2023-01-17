@@ -61,7 +61,7 @@ const WeatherOverviewItem = (props: { weather: { category: string; value: number
 
 			<div className="ml-4">
 				<p className="text-sm text-gray-500">{title}</p>
-				<h1 className="text-3xl font-medium">{isLoading ? <span>...</span> : value}</h1>
+				<h1 className="md:text-3xl text-xl font-medium">{isLoading ? <span>...</span> : value}</h1>
 			</div>
 		</div>
 	);
