@@ -2,6 +2,10 @@
 
 A weather web app which displays weather based on location
 
+### Responsive Design
+
+<img src="./docs/demo.png"/>
+
 ## Tech Stack
 
 - ReactJS (TypeScript + Vite)

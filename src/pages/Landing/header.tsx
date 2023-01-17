@@ -58,7 +58,7 @@ const Header = () => {
 						{day}, {monthShort} {now.getDate()} {now.getFullYear()}
 					</p>
 				</div>
-				<div className="md:float-right ">
+				<div className="md:float-right mt-2 md:mt-0">
 					<input
 						className="bg-gray-100 rounded-full py-2 pl-6 text-md tracking-wider mx-auto block md:inline md:mx-0"
 						placeholder="Search location here"
