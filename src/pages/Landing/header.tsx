@@ -51,22 +51,22 @@ const Header = () => {
 	let day = days[now.getDay()];
 	return (
 		<div className="flex-1 ">
-			<div className="flow-root ">
-				<div className="float-left">
+			<div className="md:flow-root ">
+				<div className="md:float-left text-center md:text-left">
 					<h2 className="font-bold text-2xl">{month}</h2>
 					<p className="text-gray-500 text-sm">
 						{day}, {monthShort} {now.getDate()} {now.getFullYear()}
 					</p>
 				</div>
-				<div className="float-right">
+				<div className="md:float-right ">
 					<input
-						className="bg-gray-100 rounded-full py-2 pl-6 text-md tracking-wider"
+						className="bg-gray-100 rounded-full py-2 pl-6 text-md tracking-wider mx-auto block md:inline md:mx-0"
 						placeholder="Search location here"
 						onChange={handleLocationOnchange}
 					/>
 					<FontAwesomeIcon
 						icon={faSearch}
-						className="ml-4 cursor-pointer relative right-14"
+						className="md:ml-4 cursor-pointer relative md:right-14 md:left-0 left-60 bottom-8 md:bottom-0"
 						onClick={handleLocationUpdate}
 					/>
 				</div>
